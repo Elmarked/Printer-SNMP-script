@@ -50,10 +50,10 @@ $name = $snmp.get(".1.3.6.1.2.1.1.5.0")
 if ($name -notlike "PX*"){$name = $p.name}
 
 write ("<b>" + $p.description + "</b><a style='text-decoration:none;font-weight:bold;' href=http://" + $p.value + " target='_new'> " + $name + "</a> <br>" + $printertype + "<br>")|add-content $outfile
-if ($percentremaining -gt 49){write "<b style='font-size:110%;color:green;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
-if (($percentremaining -gt 24) -and ($percentremaining -le 49)){write "<b style='font-size:110%;color:#40BB30;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
-if (($percentremaining -gt 10) -and ($percentremaining -le 24)){write "<b style='font-size:110%;color:orange;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
-if (($percentremaining -ge 0) -and ($percentremaining -le 10)){write "<b style='font-size:110%;color:red;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
+#if ($percentremaining -gt 49){write "<b style='font-size:110%;color:green;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
+#if (($percentremaining -gt 24) -and ($percentremaining -le 49)){write "<b style='font-size:110%;color:#40BB30;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
+if (($percentremaining -gt 10) -and ($percentremaining -le 25)){write "<b style='font-size:110%;color:red;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
+#if (($percentremaining -ge 0) -and ($percentremaining -le 10)){write "<b style='font-size:110%;color:red;'>",$percentremaining,"</b>% black toner<br>"|add-content $outfile}
 if ($status.length -gt 0){write ($status + "<br><br>")|add-content $outfile}else{write "Operational<br><br>"|add-content $outfile}
 }
 }
